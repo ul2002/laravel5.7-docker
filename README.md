@@ -19,7 +19,7 @@ $ docker-compose up -d
 ```
 
  
-Now you can access the application via http://localhost:8000.
+Now you can access the application via http://localhost
 
 And then, compile the assets :
 ```

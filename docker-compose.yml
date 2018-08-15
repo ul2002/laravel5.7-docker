@@ -1,0 +1,54 @@
+version: '2'
+
+services:
+    # services
+    app:
+      depends_on:
+       - db
+      # Extend 
+      build:
+        context: .
+      restart: always
+      ports:
+        - 80:80
+        - 443:443
+      volumes:
+        - .:/var/www
+      links:
+        - db:dbhost
+      networks:
+        - app-network
+    # The database server.
+    db:
+      image: mysql:5.7
+      restart: always
+      # Get environment variables from a file. Note: Open mysql.env to add your config.
+      env_file:
+        - mysql.env
+      # Change this if you want to use a location on the host, or it will use a Docker volume.
+      volumes:
+        - db_data:/var/lib/mysql
+      networks:
+        - app-network
+    # (Optional) A PHPMyAdmin web interface for the database.
+    phpmyadmin:
+      depends_on:
+        - db
+      image: phpmyadmin/phpmyadmin
+      restart: always
+      ports:
+        - 8080:80
+      links:
+        - db:dbhost
+      env_file:
+        - mysql.env
+      environment:
+        PMA_HOST: db
+      networks:
+        - app-network
+networks:
+    app-network:
+      driver: bridge
+
+volumes:
+  db_data:

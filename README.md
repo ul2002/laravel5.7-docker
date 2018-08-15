@@ -43,7 +43,7 @@ for any artisan command just run
 $ docker-compose run --rm app (your artisan command)
 ```
 # Authors
-Ulrich Ntella Senior Backend developer
+  [Ulrich Ntella](https://www.linkedin.com/in/ulrichsoft/). Senior Backend developer
 
 # Contributing
 Do not hesitate to contribute to the project by adapting or adding features ! Bug reports or pull requests are welcome.

@@ -68,6 +68,17 @@ example
 docker-compose run --rm --no-deps app php artisan xxxxx
 
 ```
+you can stop your service 
+
+```
+Ctrl+C 
+```
+
+if you are in detached mode
+```
+$ docker-compose stop
+```
+
 
 There is no need to run php artisan serve. PHP is already running in a dedicated container.
 

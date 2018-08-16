@@ -60,8 +60,14 @@ $ docker-compose up
 Now you can access the application via http://localhost
 and phpMyadmin via  http://localhost:8080
 
-you should ssh inside your container if you would like to install something like dependencies or run artisan commands
-you can also use docker-compose command  https://docs.docker.com/compose/reference/
+you should ssh inside your container if you would like to install something like dependencies or run artisan commands.
+you can also use docker-compose commands   https://docs.docker.com/compose/reference/ and run artisan comands
+
+example
+```
+docker-compose run --rm --no-deps app php artisan xxxxx
+
+```
 
 There is no need to run php artisan serve. PHP is already running in a dedicated container.
 

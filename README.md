@@ -13,34 +13,44 @@ Setting up your development environment on your local machine :
 $ git clone https://github.com/ul2002/laravel5.7-docker.git
 $ cd laravel5.7-docker
 $ cp .env.example .env
-$ docker-compose run --rm --no-deps app php artisan key:generate
-$ docker run --rm -it -v $(pwd):/app -w /app node npm install
-$ docker-compose up -d
+$ docker-compose build
+```
+
+you can ssh now inside the container of your app
+```
+$ docker exec -it laravel57-docker_app_1 bash
+```
+
+laravel57-docker is your app name
+
+and then run the following comands
+```
+$ php artisan migrate 
+$ php artisan db:seed 
+$ php artisan key:generate
+$ exit
+```
+
+and then start your service
+```
+$ docker-compose up 
 ```
 
  
 Now you can access the application via http://localhost
 
-And then, compile the assets :
-```
-$ docker run --rm -it -v $(pwd):/app -w /app node npm run dev
-```
-
-run migrations
-```
-$ docker-compose run --rm app php artisan migrate 
-```
-
-run seeders 
-```
-$ docker-compose run --rm app php artisan db:seed 
-```
 
 There is no need to run php artisan serve. PHP is already running in a dedicated container.
 
-for any artisan command just run
+for any artisan command , you can also ssh  inside the container of your app
 ```
-$ docker-compose run --rm app (your artisan command)
+$ docker exec -it laravel57-docker_app_1 bash
+```
+
+laravel57-docker is your app name
+and then run any bash comands
+```
+bash#  $ 
 ```
 # Authors
   [Ulrich Ntella](https://www.linkedin.com/in/ulrichsoft/). Senior Backend developer

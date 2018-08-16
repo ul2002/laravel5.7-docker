@@ -45,6 +45,7 @@ $ docker exec -it laravel57-docker_app_1 bash
 
 and then run the following comands
 ```
+$ composer install
 $ php artisan key:generate
 $ php artisan migrate 
 $ php artisan db:seed 
